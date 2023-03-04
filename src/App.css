@@ -1,38 +1,213 @@
-.App {
-  text-align: center;
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
 }
 
-.App-header {
-  background-color: #282c34;
+/* Выставляем основные настройки по-умолчанию для body */
+body {
   min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/*  Создаем границы для контейнеров */
+.bordersOut {
+  border-bottom-color: #999;
+  border-left-color: white;
+  border-right-color: #999;
+  border-style: solid;
+  border-top-color: white;
+  border-width: 4px;
+}
+.bordersIn {
+  border-bottom-color: white;
+  border-left-color: #7b7b7b;
+  border-right-color: white;
+  border-style: solid;
+  border-top-color: #7b7b7b;
+  border-width: 4px;
+}
+.App {
+  margin: 0 auto;
+  width: fit-content;
+  padding: 5px;
+  background: #c2c2c2;
+  zoom: 1.75;
+  -moz-transform: scale(1.75);
+  -moz-transform-origin: 0 0;
+}
+.container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  padding: 5px;
+  background: #c0c0c0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+  height: 26px;
+}
+.face:active {
+  background-position: -27px -24px;
+}
+.face-0 {
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: 0px -24px;
+}
+.face-1 {
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -54px -24px;
+}
+.face-2 {
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -81px -24px;
+}
+.face-3 {
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -108px -24px;
+}
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* цифры для таймера */
+.num-1 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: 0px 0px;
+}
+.num-2 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -14px 0px;
+}
+.num-3 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -28px 0px;
+}
+.num-4 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -42px 0px;
+}
+.num-5 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -56px 0px;
+}
+.num-6 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -70px 0px;
+}
+.num-7 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -84px 0px;
+}
+.num-8 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -98px 0px;
+}
+.num-9 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -112px 0px;
+}
+.num-0 {
+  width: 13px;
+  height: 23px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -126px 0px;
+}
+
+/* 
+.miner_field {
+  border: 10px solid #aaaa;
+}
+
+.row {
+  display: flex;
+}
+.cell {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
+  width: 16px;
+  height: 16px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: 0px -67px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nullCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -17px -51px;
 }
+.bomb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: url(../public/img/minesweeper-sprites_9TPZzv3.png);
+  background-position: -85px -51px;
+} */

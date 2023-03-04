@@ -1,0 +1,60 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  background: url(../../public/img/minesweeper-sprites_9TPZzv3.png);
+}
+.state-0 {
+  background-position: 0px -51px;
+}
+.state-1 {
+  background-position: -17px -51px;
+}
+.state-2 {
+  background-position: -34px -51px;
+}
+.state-3 {
+  background-position: -51px -51px;
+}
+/* .state-3:active {
+  background-position: -68px -51px;
+} */
+
+.value-0 {
+  background-position: -17px -51px;
+}
+.value-1 {
+  background-position: 0px -68px;
+}
+.value-2 {
+  background-position: -17px -68px;
+}
+.value-3 {
+  background-position: -34px -68px;
+}
+.value-4 {
+  background-position: -51px -68px;
+}
+.value-5 {
+  background-position: -68px -68px;
+}
+.value-6 {
+  background-position: -85px -68px;
+}
+.value-7 {
+  background-position: -102px -68px;
+}
+.value-8 {
+  background-position: -119px -68px;
+}
+.value-9 {
+  background-position: -85px -51px;
+}
+.value-10 {
+  background-position: -102px -51px;
+}
+.value-11 {
+  background-position: -119px -51px;
+}
