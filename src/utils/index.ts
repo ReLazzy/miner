@@ -1,5 +1,5 @@
-import { BOMB_COUNT, SIZE } from "./constants";
-import { Cell, CellState, CellValue } from "./types";
+import { BOMB_COUNT, SIZE } from "../constants";
+import { Cell, CellState, CellValue } from "../types";
 
 const grabAllAdjacentCells = (
   cells: Cell[][],
@@ -60,7 +60,7 @@ export const createFieldCells = (): Cell[][] => {
   }
   //Задаем значение  CellValey.bomb(бомба) рандомным клеткам
 
-  for (let i = 0; i !== BOMB_COUNT; ) {
+  for (let i = 0; i < BOMB_COUNT; ) {
     const x = Math.floor(Math.random() * SIZE);
     const y = Math.floor(Math.random() * SIZE);
 
@@ -231,5 +231,88 @@ export const openAllAdjacentNullCells = (
     }
   }
 
+  return newCells;
+};
+
+export const showAllBombs = (
+  yDetected: number,
+  xDetected: number,
+  cells: Cell[][]
+): Cell[][] => {
+  cells.map((row, yIndex) =>
+    row.map((cell, xIndex) => {
+      if (xIndex === xDetected && yIndex === yDetected)
+        cell.value = CellValue.detected;
+      if (cell.state === CellState.flag && cell.value === CellValue.bomb)
+        cell.value = CellValue.defused;
+      if (
+        cell.value === CellValue.bomb ||
+        cell.value === CellValue.defused ||
+        cell.value === CellValue.detected
+      )
+        cell.state = CellState.visible;
+    })
+  );
+  return cells;
+};
+
+export const checkWin = (
+  newCells: Cell[][],
+  setIsWon: React.Dispatch<React.SetStateAction<boolean>>
+): Cell[][] => {
+  //проверяем остались ли пустые клетки
+  let safeOpenCellsExists = false;
+  for (let row = 0; row < SIZE; row++) {
+    for (let col = 0; col < SIZE; col++) {
+      const currentCell = newCells[row][col];
+      if (
+        currentCell.value !== CellValue.bomb &&
+        currentCell.state === CellState.closed
+      ) {
+        console.log("первая ошибка");
+
+        safeOpenCellsExists = true;
+        break;
+      }
+    }
+  }
+
+  if (!safeOpenCellsExists) {
+    newCells = newCells.map((row) =>
+      row.map((cell) => {
+        if (cell.state === CellState.flag && !(cell.value === CellValue.bomb)) {
+          return {
+            ...cell,
+            state: CellState.closed,
+          };
+        }
+        if (cell.value === CellValue.bomb) {
+          return {
+            ...cell,
+            state: CellState.flag,
+          };
+        }
+        return cell;
+      })
+    );
+    setIsWon(true);
+  }
+  return newCells;
+};
+
+export const startField = (
+  newCells: Cell[][],
+  yParam: number,
+  xParam: number
+): Cell[][] => {
+  let isABomb = newCells[yParam][xParam].value === CellValue.bomb;
+
+  while (isABomb) {
+    newCells = createFieldCells();
+    if (newCells[yParam][xParam].value !== CellValue.bomb) {
+      isABomb = false;
+      break;
+    }
+  }
   return newCells;
 };

@@ -23,13 +23,11 @@ const Button: React.FC<ButtonI> = ({
   y,
   value,
   state,
-  isDefused,
 }) => {
-  const defused = isDefused ? cs.bomb_defused : "";
   const arrayModules =
     state === CellState.visible
       ? [cs.button, cs[`value-${value}`]]
-      : [cs.button, cs[`state-${state}`], defused];
+      : [cs.button, cs[`state-${state}`]];
 
   return (
     <div
