@@ -1,5 +1,6 @@
 import { SIZE } from "../constants";
-import { AdjacentCellsI, Cell } from "../types";
+import { AdjacentCellsI } from "../types/AdjscentCells";
+import { Cell } from "../types/CellTypes";
 
 export const grabAllAdjacentCells = (
   cells: Cell[][],

@@ -1,5 +1,5 @@
 import { SIZE } from "../constants";
-import { Cell, CellState, CellValue } from "../types";
+import { Cell, CellState, CellValue } from "../types/CellTypes";
 
 export const checkWin = (
   newCells: Cell[][],

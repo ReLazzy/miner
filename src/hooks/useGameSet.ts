@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Face } from "../types";
+import { Face } from "../types/FaceTypes";
 
 export const useGameState = (
   state: boolean,

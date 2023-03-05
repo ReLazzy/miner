@@ -1,5 +1,6 @@
 import { BOMB_COUNT, SIZE } from "../constants";
-import { Cell, CellState, CellValue } from "../types";
+import { Cell, CellState, CellValue } from "../types/CellTypes";
+
 import { grabAllAdjacentCells } from "./grabAllAdjacentCells";
 
 export const createFieldCells = (): Cell[][] => {

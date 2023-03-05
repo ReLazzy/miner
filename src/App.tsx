@@ -7,7 +7,9 @@ import DisplayNumber from "./components/DisplayNumber";
 import FaceButton from "./components/FaceButton";
 import { BOMB_COUNT } from "./constants";
 import { useGameState } from "./hooks/useGameSet";
-import { Face, Cell } from "./types";
+import { Cell } from "./types/CellTypes";
+import { Face } from "./types/FaceTypes";
+
 import { createFieldCells } from "./utils/createFieldCells";
 
 function App() {
@@ -48,9 +50,9 @@ function App() {
   return (
     <div className="App bordersOut">
       <div className="header bordersIn">
-        <DisplayNumber value={bombFlags}></DisplayNumber>
-        <FaceButton onClick={gameSetSettings} value={face}></FaceButton>
-        <DisplayNumber value={timeCount}></DisplayNumber>
+        <DisplayNumber value={bombFlags} />
+        <FaceButton onClick={gameSetSettings} value={face} />
+        <DisplayNumber value={timeCount} />
       </div>
       <CellsField
         cells={cells}
@@ -64,7 +66,7 @@ function App() {
         setIsLive={setIsLive}
         setIsLost={setIsLost}
         setIsWon={setIsWon}
-      ></CellsField>
+      />
     </div>
   );
 }

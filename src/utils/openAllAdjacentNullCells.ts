@@ -1,4 +1,4 @@
-import { Cell, CellState, CellValue } from "../types";
+import { Cell, CellState, CellValue } from "../types/CellTypes";
 import { grabAllAdjacentCells } from "./grabAllAdjacentCells";
 
 export const openAllAdjacentNullCells = (

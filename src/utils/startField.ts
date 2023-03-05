@@ -1,4 +1,4 @@
-import { Cell, CellValue } from "../types";
+import { Cell, CellValue } from "../types/CellTypes";
 import { createFieldCells } from "./createFieldCells";
 
 export const startField = (

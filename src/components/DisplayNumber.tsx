@@ -25,7 +25,7 @@ const DisplayNumber: React.FC<DisplayNumberI> = ({ value }) => {
             key={i}
             className={cs.num}
             style={{ backgroundPositionX: offsetX }}
-          ></div>
+          />
         );
       })}
     </div>

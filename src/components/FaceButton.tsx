@@ -1,5 +1,6 @@
 import React from "react";
-import { Face } from "../types";
+import { Face } from "../types/FaceTypes";
+
 import cs from "./FaceButton.module.css";
 
 const cellOffsetX = -27;
@@ -15,7 +16,7 @@ const FaceButton: React.FC<FaceI> = ({ onClick, value }) => {
       onClick={onClick}
       className={cs.face}
       style={{ backgroundPositionX: offsetX }}
-    ></div>
+    />
   );
 };
 

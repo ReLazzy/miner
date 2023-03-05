@@ -1,5 +1,7 @@
 import React from "react";
-import { Cell, CellState, CellValue, Face } from "../types";
+import { Cell, CellState, CellValue } from "../types/CellTypes";
+import { Face } from "../types/FaceTypes";
+
 import { checkWin } from "../utils/checkWin";
 import { openAllAdjacentNullCells } from "../utils/openAllAdjacentNullCells";
 import { showAllBombs } from "../utils/showAllBombs";
@@ -144,7 +146,7 @@ const CellsField: React.FC<CellsFieldI> = ({
               y={y}
               value={cell.value}
               state={cell.state}
-            ></Button>
+            />
           ))}
         </div>
       ))}

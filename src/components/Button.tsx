@@ -1,5 +1,6 @@
 import React from "react";
-import { CellState, CellValue } from "../types";
+import { CellState, CellValue } from "../types/CellTypes";
+
 import cs from "./Button.module.css";
 
 interface ButtonI {
@@ -52,7 +53,7 @@ const Button = (props: ButtonI) => {
       onClick={onClick(y, x)}
       onContextMenu={onContext(y, x)}
       className={arrayModules.join(" ")}
-    ></div>
+    />
   );
 };
 
