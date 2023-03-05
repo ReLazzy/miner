@@ -1,6 +1,6 @@
-#MineSweeper
+# MineSweeper
 
 
-##Stack
+## Stack
 - [TypeScript]
 - [React]
