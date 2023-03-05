@@ -14,8 +14,6 @@ export const checkWin = (
         currentCell.value !== CellValue.bomb &&
         currentCell.state === CellState.closed
       ) {
-        console.log("первая ошибка");
-
         safeOpenCellsExists = true;
         break;
       }

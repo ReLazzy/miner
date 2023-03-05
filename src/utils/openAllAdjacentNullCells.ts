@@ -6,7 +6,6 @@ export const openAllAdjacentNullCells = (
   rowParam: number,
   colParam: number
 ) => {
-  console.log("заходим");
   const currentCell = cells[rowParam][colParam];
   if (
     currentCell.state === CellState.flag ||
