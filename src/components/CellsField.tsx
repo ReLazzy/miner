@@ -57,8 +57,6 @@ const CellsField: React.FC<CellsFieldI> = ({
         cells[yParam][xParam].state === CellState.pressed &&
         !(isWon || isLost)
       ) {
-        console.log("выход");
-
         cells[yParam][xParam].state = CellState.closed;
         setFace(Face.smile);
       }
