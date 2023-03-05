@@ -6,8 +6,8 @@ import CellsField from "./components/CellsField";
 import DisplayNumber from "./components/DisplayNumber";
 import FaceButton from "./components/FaceButton";
 import { BOMB_COUNT } from "./constants";
-import { useGameState } from "./hooks/useGameState";
 import { Face, Cell } from "./types";
+import { checkGameState } from "./utils/checkGameState";
 import { createFieldCells } from "./utils/createFieldCells";
 
 function App() {
@@ -30,8 +30,8 @@ function App() {
     setIsWon(false);
   };
 
-  useGameState(isWon, Face.win, setIsLive, setFace);
-  useGameState(isLost, Face.death, setIsLive, setFace);
+  checkGameState(isWon, Face.win, setIsLive, setFace);
+  checkGameState(isLost, Face.death, setIsLive, setFace);
 
   useEffect(() => {
     if (timeCount !== 999 && isLive) {
