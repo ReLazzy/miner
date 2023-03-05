@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Face } from "../types";
 
-export const checkGameState = (
+export const useGameState = (
   state: boolean,
   face: Face,
   setGame: React.Dispatch<React.SetStateAction<boolean>>,
