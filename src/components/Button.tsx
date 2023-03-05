@@ -8,6 +8,10 @@ interface ButtonI {
     rowParam: number,
     colParam: number
   ): (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onMouseOut(
+    rowParam: number,
+    colParam: number
+  ): (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onMouseUp(
     rowParam: number,
     colParam: number
@@ -24,8 +28,17 @@ interface ButtonI {
 }
 
 const Button = (props: ButtonI) => {
-  const { onClick, onContext, onMouseDown, onMouseUp, x, y, value, state } =
-    props;
+  const {
+    onClick,
+    onContext,
+    onMouseDown,
+    onMouseOut,
+    onMouseUp,
+    x,
+    y,
+    value,
+    state,
+  } = props;
   const arrayModules =
     state === CellState.visible
       ? [cs.button, cs[`value-${value}`]]
@@ -35,6 +48,7 @@ const Button = (props: ButtonI) => {
     <div
       onMouseDown={onMouseDown(y, x)}
       onMouseUp={onMouseUp(y, x)}
+      onMouseOut={onMouseOut(y, x)}
       onClick={onClick(y, x)}
       onContextMenu={onContext(y, x)}
       className={arrayModules.join(" ")}

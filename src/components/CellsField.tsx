@@ -55,6 +55,8 @@ const CellsField: React.FC<CellsFieldI> = ({
         cells[yParam][xParam].state === CellState.pressed &&
         !(isWon || isLost)
       ) {
+        console.log("выход");
+
         cells[yParam][xParam].state = CellState.closed;
         setFace(Face.smile);
       }
@@ -135,6 +137,7 @@ const CellsField: React.FC<CellsFieldI> = ({
               onContext={handleCellContext}
               onMouseDown={handleCellMouseDown}
               onMouseUp={handleCellMouseUp}
+              onMouseOut={handleCellMouseUp}
               onClick={handleCellClick}
               key={`${y}-${x}`}
               x={x}
