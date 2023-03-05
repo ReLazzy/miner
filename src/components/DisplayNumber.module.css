@@ -10,33 +10,3 @@
   height: 23px;
   background: url(/public/img/minesweeper-sprites_9TPZzv3.png);
 }
-.num-1 {
-  background-position: 0px 0px;
-}
-.num-2 {
-  background-position: -14px 0px;
-}
-.num-3 {
-  background-position: -28px 0px;
-}
-.num-4 {
-  background-position: -42px 0px;
-}
-.num-5 {
-  background-position: -56px 0px;
-}
-.num-6 {
-  background-position: -70px 0px;
-}
-.num-7 {
-  background-position: -84px 0px;
-}
-.num-8 {
-  background-position: -98px 0px;
-}
-.num-9 {
-  background-position: -112px 0px;
-}
-.num-0 {
-  background-position: -126px 0px;
-}

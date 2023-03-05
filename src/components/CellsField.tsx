@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { SIZE } from "../constants";
+import React from "react";
 import { Cell, CellState, CellValue, Face } from "../types";
-import {
-  checkWin,
-  createFieldCells,
-  openAllAdjacentNullCells,
-  showAllBombs,
-  startField,
-} from "../utils";
+import { checkWin } from "../utils/checkWin";
+import { openAllAdjacentNullCells } from "../utils/openAllAdjacentNullCells";
+import { showAllBombs } from "../utils/showAllBombs";
+import { startField } from "../utils/startField";
 import Button from "./Button";
+import cs from "./CellsField.module.css";
 
 interface CellsFieldI {
   cells: Cell[][];
@@ -48,7 +45,6 @@ const CellsField: React.FC<CellsFieldI> = ({
       ) {
         cells[yParam][xParam].state = CellState.pressed;
         setFace(Face.fear);
-        //setCells([...cells]);
       }
     };
   const handleCellMouseUp =
@@ -65,52 +61,43 @@ const CellsField: React.FC<CellsFieldI> = ({
     };
 
   //обработчик для клика лкм по клетке
-  const handleCellClick =
-    (yParam: number, xParam: number) =>
-    (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
-      let newCells = cells.slice();
+  const handleCellClick = (yParam: number, xParam: number) => (): void => {
+    let newCells = cells.slice();
 
-      console.log("state", newCells[yParam][xParam].state);
-      console.log("value", newCells[yParam][xParam].value);
-      console.log("поле", newCells);
+    if (
+      newCells[yParam][xParam].state === CellState.flag ||
+      newCells[yParam][xParam].state === CellState.visible ||
+      newCells[yParam][xParam].state === CellState.question ||
+      isWon ||
+      isLost
+    ) {
+      return;
+    }
 
-      if (
-        newCells[yParam][xParam].state === CellState.flag ||
-        newCells[yParam][xParam].state === CellState.visible ||
-        newCells[yParam][xParam].state === CellState.question ||
-        isWon ||
-        isLost
-      ) {
-        return;
-      }
+    //  меняем поле пока в нужной клетке не будет бомбы
+    if (!isLive) {
+      newCells = startField(newCells, yParam, xParam);
+      setIsLive(true);
+    }
 
-      //  меняем поле пока в нужной клетке не будет бомбы
-      if (!isLive) {
-        newCells = startField(newCells, yParam, xParam);
-        setIsLive(true);
-      }
+    const currentCell = newCells[yParam][xParam];
 
-      const currentCell = newCells[yParam][xParam];
-
-      console.log("поле", newCells);
-      console.log("текущая клетка", currentCell);
-
-      if (currentCell.value === CellValue.bomb) {
-        newCells = showAllBombs(yParam, xParam, newCells);
-        setIsLost(true);
-        setCells(newCells);
-        return;
-      }
-      currentCell.state = CellState.visible;
-
-      if (currentCell.value === CellValue.none)
-        newCells = openAllAdjacentNullCells(newCells, yParam, xParam);
-
-      //проверяем остались ли пустые клетки
-      newCells = checkWin(newCells, setIsWon);
-
+    if (currentCell.value === CellValue.bomb) {
+      newCells = showAllBombs(yParam, xParam, newCells);
+      setIsLost(true);
       setCells(newCells);
-    };
+      return;
+    }
+    currentCell.state = CellState.visible;
+
+    if (currentCell.value === CellValue.none)
+      newCells = openAllAdjacentNullCells(newCells, yParam, xParam);
+
+    //проверяем остались ли пустые клетки
+    newCells = checkWin(newCells, setIsWon);
+
+    setCells(newCells);
+  };
   //обработчик для клика пкм по клетке
   const handleCellContext =
     (yParam: number, xParam: number) =>
@@ -120,7 +107,12 @@ const CellsField: React.FC<CellsFieldI> = ({
       const currentCells = cells.slice();
       const currentCell = cells[yParam][xParam];
 
-      if (currentCell.state === CellState.visible || isWon || isLost) {
+      if (
+        currentCell.state === CellState.visible ||
+        isWon ||
+        isLost ||
+        !isLive
+      ) {
         return;
       } else if (currentCell.state === CellState.closed && bombFlags !== 0) {
         currentCells[yParam][xParam].state = CellState.flag;
@@ -135,9 +127,9 @@ const CellsField: React.FC<CellsFieldI> = ({
       setCells(currentCells);
     };
   return (
-    <div className="container bordersIn">
+    <div className={cs.container}>
       {cells.map((row, y) => (
-        <div key={y} className="cellsRow">
+        <div key={y} className={cs.cellsRow}>
           {row.map((cell, x) => (
             <Button
               onContext={handleCellContext}

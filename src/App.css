@@ -60,26 +60,24 @@ ol[class] {
   border-top-color: #7b7b7b;
   border-width: 4px;
 }
+#root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .App {
   margin: 0 auto;
   width: fit-content;
   padding: 5px;
   background: #c2c2c2;
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+
 .header {
   padding: 5px;
+  margin-bottom: 5px;
   background: #c0c0c0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.cellsRow {
-  display: flex;
 }

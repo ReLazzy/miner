@@ -5,19 +5,8 @@
   width: 26px;
   height: 26px;
   background: url(/public/img/minesweeper-sprites_9TPZzv3.png);
-}
-.face:active {
-  background-position: -27px -24px;
-}
-.face-0 {
   background-position: 0px -24px;
 }
-.face-1 {
-  background-position: -54px -24px;
-}
-.face-2 {
-  background-position: -81px -24px;
-}
-.face-3 {
-  background-position: -108px -24px;
+.face:active {
+  background-position: -27px -24px !important;
 }

@@ -1,0 +1,17 @@
+.container {
+  border-bottom-color: white;
+  border-left-color: #7b7b7b;
+  border-right-color: white;
+  border-style: solid;
+  border-top-color: #7b7b7b;
+  border-width: 4px;
+  display: flex;
+
+  background: #c0c0c0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.cellsRow {
+  display: flex;
+}

@@ -6,7 +6,7 @@ export const useGameState = (
   face: Face,
   setGame: React.Dispatch<React.SetStateAction<boolean>>,
   setFace: React.Dispatch<React.SetStateAction<Face>>
-) => {
+): void => {
   useEffect(() => {
     if (state) {
       setGame(false);

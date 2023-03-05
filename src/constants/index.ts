@@ -1,2 +1,2 @@
-export const SIZE = 5;
-export const BOMB_COUNT = 2;
+export const SIZE = 16;
+export const BOMB_COUNT = 40;

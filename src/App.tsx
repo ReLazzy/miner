@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
-import Button from "./components/Button";
+
 import CellsField from "./components/CellsField";
 import DisplayNumber from "./components/DisplayNumber";
 import FaceButton from "./components/FaceButton";
-import { BOMB_COUNT, SIZE } from "./constants";
+import { BOMB_COUNT } from "./constants";
 import { useGameState } from "./hooks/useGameState";
-import { Face, CellState, CellValue, Cell } from "./types";
-import {
-  createFieldCells,
-  openAllAdjacentNullCells,
-  showAllBombs,
-} from "./utils";
+import { Face, Cell } from "./types";
+import { createFieldCells } from "./utils/createFieldCells";
 
 function App() {
   const [cells, setCells] = useState<Cell[][]>(createFieldCells());
@@ -23,8 +19,8 @@ function App() {
   const [isWon, setIsWon] = useState<boolean>(false);
   const [isLive, setIsLive] = useState<boolean>(false);
 
-  //обработчик для клика по лицу
-  const handleFaceClick = (): void => {
+  //задаем значения
+  const gameSetSettings = (): void => {
     setIsLive(false);
     setFace(Face.smile);
     setTimeCount(0);
@@ -53,7 +49,7 @@ function App() {
     <div className="App bordersOut">
       <div className="header bordersIn">
         <DisplayNumber value={bombFlags}></DisplayNumber>
-        <FaceButton onClick={handleFaceClick} value={face}></FaceButton>
+        <FaceButton onClick={gameSetSettings} value={face}></FaceButton>
         <DisplayNumber value={timeCount}></DisplayNumber>
       </div>
       <CellsField
