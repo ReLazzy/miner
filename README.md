@@ -2,5 +2,5 @@
 
 
 ## Stack
-- [TypeScript]
-- [React]
+- TypeScript
+- React
