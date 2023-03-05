@@ -67,10 +67,16 @@ ol[class] {
   justify-content: center;
 }
 .App {
+  transform: scale(1.75);
   margin: 0 auto;
   width: fit-content;
   padding: 5px;
   background: #c2c2c2;
+}
+@media (max-width: 500px) {
+  .App {
+    transform: scale(1);
+  }
 }
 
 .header {
